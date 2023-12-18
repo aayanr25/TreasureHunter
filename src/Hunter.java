@@ -34,7 +34,7 @@ public class Hunter {
      */
     public void changeGold(int modifier) {
         gold += modifier;
-        if (gold <= -1) {
+        if (gold < 0) {
             gold = 0;
         }
     }
@@ -134,7 +134,7 @@ public class Hunter {
 
         for (String item : kit) {
             if (item != null) {
-                printableKit += item + space;
+                printableKit += Colors.PURPLE + item + Colors.RESET + space;
             }
         }
 
@@ -145,7 +145,7 @@ public class Hunter {
      * @return A string representation of the hunter.
      */
     public String toString() {
-        String str = hunterName + " has " + gold + " gold";
+        String str = hunterName + " has " + Colors.YELLOW + gold + " gold" + Colors.RESET;
         if (!kitIsEmpty()) {
             str += " and " + getInventory();
         }
