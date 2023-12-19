@@ -112,6 +112,14 @@ public class Town {
             }
         }
     }
+    public void digForGold() {
+        if (hunter.hasItemInKit("shovel")) {
+            int Chance =  (int) (Math.random() * 2);
+            System.out.print(Chance);
+        } else {
+            System.out.println("You don't have a shovel");
+        }
+    }
 
     public String toString() {
         return "This nice little town is surrounded by " + terrain.getTerrainName() + ".";
