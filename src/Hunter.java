@@ -19,9 +19,9 @@ public class Hunter {
     public Hunter(String hunterName, int startingGold) {
         this.hunterName = hunterName;
         if (startingGold == 100) {
-            kit = new String[]{"water", "rope", "machete", "horse", "boat"};
+            kit = new String[]{"water", "rope", "machete", "horse", "boat", "boots"};
         } else {
-            kit = new String[5]; // only 5 possible items can be stored in kit
+            kit = new String[6]; // only 5 possible items can be stored in kit
         }
         gold = startingGold;
     }
