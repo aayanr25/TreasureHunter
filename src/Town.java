@@ -137,17 +137,15 @@ public class Town {
 
     public String getTreasure() {
         double rnd = Math.random();
-        String treasure = "";
         if (rnd < .25) {
-            treasure = "crown";
+            return "crown";
         } else if (rnd < .5) {
-            treasure = "trophy";
+            return "trophy";
         } else if (rnd < .75) {
-            treasure = "gem";
+            return "gem";
         } else {
-            treasure = "dust";
+            return "dust";
         }
-        return treasure;
     }
 
     public void huntForTreasure() {
@@ -157,8 +155,13 @@ public class Town {
             if (treasure.equals("dust")) {
                 System.out.println("You found dust");
             } else {
-                System.out.println("You found " + treasure + "!");
-                hunter.addTreasure(treasure);
+                if (hunter.hasTreasure(treasure)) {
+                    System.out.println("You already collected " + treasure);
+                } else {
+                    System.out.println("You found a " + treasure + "!");
+                    hunter.addTreasure(treasure);
+                }
+                searchedTown = true;
             }
         }
     }
