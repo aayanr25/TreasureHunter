@@ -45,6 +45,9 @@ public class Hunter {
             gold = 0;
         }
     }
+    public int getGold() {
+        return gold;
+    }
 
     /**
      * Buys an item from a shop.

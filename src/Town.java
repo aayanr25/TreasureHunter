@@ -110,6 +110,11 @@ public class Town {
                 printMessage += "\nYou won the brawl and receive " + Colors.YELLOW + goldDiff + " gold." + Colors.RESET;
                 hunter.changeGold(goldDiff);
             } else {
+                if (goldDiff > hunter.getGold()) {
+                    System.out.print("\nGame Over");
+
+                    System.exit(0);
+                }
                 printMessage += "That'll teach you to go lookin' fer trouble in MY town! Now pay up!";
                 printMessage += "\nYou lost the brawl and pay " + goldDiff + " gold.";
                 hunter.changeGold(-goldDiff);
