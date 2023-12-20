@@ -150,15 +150,15 @@ public class Town {
 
     public void huntForTreasure() {
         if (searchedTown) {
-            System.out.println("You have already searched this town.");
+           printMessage = "You have already searched this town.";
         } else {
             if (treasure.equals("dust")) {
-                System.out.println("You found dust");
+                printMessage = "You found dust";
             } else {
                 if (hunter.hasTreasure(treasure)) {
-                    System.out.println("You already collected " + treasure);
+                    printMessage = "You already collected " + treasure;
                 } else {
-                    System.out.println("You found a " + treasure + "!");
+                    printMessage = "You found a " + treasure + "!";
                     hunter.addTreasure(treasure);
                 }
                 searchedTown = true;

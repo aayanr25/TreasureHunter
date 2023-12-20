@@ -164,6 +164,21 @@ public class Hunter {
         return printableKit;
     }
 
+    public String getTreasureList() {
+        String printableList = "";
+        String space = " ";
+        if (treasureListIsEmpty()) {
+            printableList += "none";
+        }
+        for (String item : treasure) {
+            if (item != null) {
+                printableList += Colors.RED + "a " + item + Colors.RESET + space;
+            }
+        }
+
+        return printableList;
+    }
+
     /**
      * @return A string representation of the hunter.
      */
@@ -171,6 +186,9 @@ public class Hunter {
         String str = hunterName + " has " + Colors.YELLOW + gold + " gold" + Colors.RESET;
         if (!kitIsEmpty()) {
             str += " and " + getInventory();
+        }
+        if (!treasureListIsEmpty()) {
+            str += "\nTreasures found: " + getTreasureList();
         }
         return str;
     }
@@ -207,6 +225,17 @@ public class Hunter {
 
         return true;
     }
+
+    private boolean treasureListIsEmpty() {
+        for (String string : treasure) {
+            if (string != null) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 
     /**
      * Finds the first index where there is a null value.
