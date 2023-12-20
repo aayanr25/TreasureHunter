@@ -18,6 +18,7 @@ public class TreasureHunter {
     private boolean hardMode;
     private boolean testMode;
     private boolean easyMode;
+    private boolean gameOver;
 
     /**
      * Constructs the Treasure Hunter game.
@@ -109,8 +110,9 @@ public class TreasureHunter {
      */
     private void showMenu() {
         String choice = "";
+        isAllTreasureFound();
 
-        while (!choice.equals("x")) {
+        while (!gameOver) {
             System.out.println();
             System.out.println(currentTown.getLatestNews());
             System.out.println("***");
@@ -147,12 +149,20 @@ public class TreasureHunter {
             currentTown.lookForTrouble();
         } else if (choice.equals("x")) {
             System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
+            gameOver = true;
         } else if (choice.equals("d")) {
             currentTown.digForGold();
         } else if (choice.equals("h")) {
             currentTown.huntForTreasure();
         } else {
             System.out.println("Yikes! That's an invalid option! Try again.");
+        }
+    }
+
+    private void isAllTreasureFound() {
+        if (hunter.treasureListFull()) {
+            System.out.println("Congratulations, you have found the last of the three treasures, you win!");
+            gameOver= true;
         }
     }
 }

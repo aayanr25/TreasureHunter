@@ -175,7 +175,7 @@ public class Hunter {
         }
         for (String item : treasure) {
             if (item != null) {
-                printableList += Colors.RED + "a " + item + Colors.RESET + space;
+                printableList +=  "a " + item + space;
             }
         }
 
@@ -237,6 +237,27 @@ public class Hunter {
         }
 
         return true;
+    }
+
+    public boolean treasureListFull() {
+        boolean hasCrown = false;
+        boolean hasTrophy = false;
+        boolean hasGem = false;
+        for (String str : treasure) {
+            if (str != null) {
+                if (str.equals("crown")) {
+                    hasCrown = true;
+                } else if (str.equals("trophy")) {
+                    hasTrophy = true;
+                } else if (str.equals("gem")) {
+                    hasGem = true;
+                }
+            }
+        }
+        if (hasCrown && hasTrophy && hasGem) {
+            return true;
+        }
+        return false;
     }
 
 
