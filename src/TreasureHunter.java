@@ -115,12 +115,17 @@ public class TreasureHunter {
      */
     private void showMenu() {
         String choice = "";
-        isAllTreasureFound();
+
 
         while (!gameOver) {
             System.out.println();
             System.out.println(currentTown.getLatestNews());
             System.out.println("***");
+            if (hunter.hasTreasure("crown") && hunter.hasTreasure("trophy") && hunter.hasTreasure("gem")) {
+                System.out.println("Congratulations, you have found the last of the three treasures, you win!");
+                gameOver = true;
+                break;
+            }
             System.out.println(hunter);
             System.out.println(currentTown);
             System.out.println("(B)uy something at the shop.");
@@ -164,10 +169,4 @@ public class TreasureHunter {
         }
     }
 
-    private void isAllTreasureFound() {
-        if (hunter.treasureListFull()) {
-            System.out.println("Congratulations, you have found the last of the three treasures, you win!");
-            gameOver= true;
-        }
-    }
 }

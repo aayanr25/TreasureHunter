@@ -9,8 +9,7 @@ public class Hunter {
     private String hunterName;
     private String[] kit;
     private int gold;
-    private String[] treasure;
-    private boolean samurai;
+    private String[] treasureList;
 
     /**
      * The base constructor of a Hunter assigns the name to the hunter and an empty kit.
@@ -27,7 +26,7 @@ public class Hunter {
         } else {
             kit = new String[6]; // only 5 possible items can be stored in kit
         }
-        treasure = new String[3];
+        treasureList = new String[3];
         gold = startingGold;
         this.samurai = samurai;
     }
@@ -120,8 +119,8 @@ public class Hunter {
     }
 
     public void addTreasure(String item) {
-            int idx = emptyPositionInTreasure();
-            treasure[idx] = item;
+            int idx = emptyPositionInTreasureList();
+            treasureList[idx] = item;
     }
 
     /**
@@ -142,7 +141,7 @@ public class Hunter {
     }
 
     public boolean hasTreasure(String item) {
-        for (String tmpItem : treasure) {
+        for (String tmpItem : treasureList) {
             if (item.equals(tmpItem)) {
                 // early return
                 return true;
@@ -177,7 +176,7 @@ public class Hunter {
         if (treasureListIsEmpty()) {
             printableList += "none";
         }
-        for (String item : treasure) {
+        for (String item : treasureList) {
             if (item != null) {
                 printableList +=  "a " + item + space;
             }
@@ -234,7 +233,7 @@ public class Hunter {
     }
 
     private boolean treasureListIsEmpty() {
-        for (String string : treasure) {
+        for (String string : treasureList) {
             if (string != null) {
                 return false;
             }
@@ -247,21 +246,18 @@ public class Hunter {
         boolean hasCrown = false;
         boolean hasTrophy = false;
         boolean hasGem = false;
-        for (String str : treasure) {
+        for (String str : treasureList) {
             if (str != null) {
                 if (str.equals("crown")) {
                     hasCrown = true;
-                } else if (str.equals("trophy")) {
+                } if (str.equals("trophy")) {
                     hasTrophy = true;
-                } else if (str.equals("gem")) {
+                } if (str.equals("gem")) {
                     hasGem = true;
                 }
             }
         }
-        if (hasCrown && hasTrophy && hasGem) {
-            return true;
-        }
-        return false;
+        return hasCrown && hasTrophy && hasGem;
     }
 
 
@@ -279,9 +275,9 @@ public class Hunter {
 
         return -1;
     }
-    private int emptyPositionInTreasure() {
-        for (int i = 0; i < treasure.length; i++) {
-            if (treasure[i] == null) {
+    public int emptyPositionInTreasureList() {
+        for (int i = 0; i < treasureList.length; i++) {
+            if (treasureList[i] == null) {
                 return i;
             }
         }
