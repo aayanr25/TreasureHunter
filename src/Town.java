@@ -143,11 +143,11 @@ public class Town {
 
     public String getTreasure() {
         double rnd = Math.random();
-        if (rnd < .25) {
+        if (rnd < .33) {
             return "crown";
-        } else if (rnd < .5) {
+        } else if (rnd < .66) {
             return "trophy";
-        } else if (rnd < .75) {
+        } else if (rnd < 1) {
             return "gem";
         } else {
             return "dust";
