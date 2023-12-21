@@ -10,6 +10,7 @@ public class Hunter {
     private String[] kit;
     private int gold;
     private String[] treasure;
+    private boolean samurai;
 
     /**
      * The base constructor of a Hunter assigns the name to the hunter and an empty kit.
@@ -17,15 +18,18 @@ public class Hunter {
      * @param hunterName The hunter's name.
      * @param startingGold The gold the hunter starts with.
      */
-    public Hunter(String hunterName, int startingGold) {
+    public Hunter(String hunterName, int startingGold, boolean samurai) {
         this.hunterName = hunterName;
         if (startingGold == 100) {
             kit = new String[]{"water", "rope", "machete", "horse", "boat", "boots"};
+        } else if (samurai) {
+            kit = new String[8];
         } else {
             kit = new String[6]; // only 5 possible items can be stored in kit
         }
         treasure = new String[3];
         gold = startingGold;
+        this.samurai = samurai;
     }
 
     //Accessors
