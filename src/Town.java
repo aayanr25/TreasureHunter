@@ -112,7 +112,7 @@ public class Town {
                 hunter.changeGold(goldDiff);
             } else {
                 if (goldDiff > hunter.getGold()) {
-                    System.out.print("\nGame Over");
+                    System.out.print("\nGame Over ");
 
                     System.exit(0);
                 }
