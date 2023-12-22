@@ -10,6 +10,7 @@ public class Hunter {
     private String[] kit;
     private int gold;
     private String[] treasureList;
+    private static boolean samurai;
 
     /**
      * The base constructor of a Hunter assigns the name to the hunter and an empty kit.
@@ -35,7 +36,9 @@ public class Hunter {
     public String getHunterName() {
         return hunterName;
     }
-
+    public static boolean getSamurai() {
+        return samurai;
+    }
 
     /**
      * Updates the amount of gold the hunter has.
@@ -60,10 +63,9 @@ public class Hunter {
      * @return true if the item is successfully bought.
      */
     public boolean buyItem(String item, int costOfItem) {
-        if (costOfItem == 0 || gold < costOfItem || hasItemInKit(item)) {
+        if ((costOfItem == 0 && !Hunter.getSamurai()) || gold < costOfItem || hasItemInKit(item)) {
             return false;
         }
-
         gold -= costOfItem;
         addItem(item);
         return true;
@@ -108,7 +110,7 @@ public class Hunter {
      * @param item The item to be added to the kit.
      * @return true if the item is not in the kit and has been added.
      */
-    private boolean addItem(String item) {
+    public boolean addItem(String item) {
         if (!hasItemInKit(item)) {
             int idx = emptyPositionInKit();
             kit[idx] = item;
